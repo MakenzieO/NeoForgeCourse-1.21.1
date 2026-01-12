@@ -1,5 +1,6 @@
 package net.Cookie3334.mccourse;
 
+import net.Cookie3334.mccourse.block.ModBlocks;
 import net.Cookie3334.mccourse.item.ModCreativeModeTabs;
 import net.Cookie3334.mccourse.item.ModItems;
 import net.minecraft.world.item.CreativeModeTab;
@@ -35,6 +36,7 @@ public class MCCourseMod {
         ModCreativeModeTabs.register(modEventBus);
 
         ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (ExampleMod) to respond directly to events.
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
