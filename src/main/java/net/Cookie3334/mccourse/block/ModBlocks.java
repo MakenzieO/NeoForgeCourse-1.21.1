@@ -1,6 +1,7 @@
 package net.Cookie3334.mccourse.block;
 
 import net.Cookie3334.mccourse.MCCourseMod;
+import net.Cookie3334.mccourse.block.custom.MagicBlock;
 import net.Cookie3334.mccourse.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -33,6 +34,8 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> BlACK_OPAL_END_ORE = registerBlock("black_opal_end_ore",
             () -> new Block(BlockBehaviour.Properties.of().strength(4f).requiresCorrectToolForDrops()));
+    public static final DeferredBlock<Block> MAGIC_BLOCK = registerBlock("magic_block",
+            () -> new MagicBlock(BlockBehaviour.Properties.of().strength(4f).requiresCorrectToolForDrops()));
 
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
