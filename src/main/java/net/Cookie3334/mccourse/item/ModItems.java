@@ -1,11 +1,18 @@
 package net.Cookie3334.mccourse.item;
 
 import net.Cookie3334.mccourse.MCCourseMod;
+import net.Cookie3334.mccourse.block.custom.FuelItem;
 import net.Cookie3334.mccourse.item.custom.ChainsawItem;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.inventory.tooltip.TooltipComponent;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
+
+import java.util.List;
 
 public class ModItems {
     public static final DeferredRegister.Items ITEMs = DeferredRegister.createItems(MCCourseMod.MOD_ID);
@@ -16,7 +23,15 @@ public class ModItems {
     public static final  DeferredItem<Item> CHAINSAW =
             ITEMs.registerItem("chainsaw", ChainsawItem::new, new Item.Properties().durability(32));
     public static final  DeferredItem<Item> TOMATO =
-            ITEMs.registerItem("tomato", Item::new, new Item.Properties().food(ModFoodProperties.TOMATO));
+            ITEMs.registerItem("tomato", properties -> new Item(properties) {
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+                    tooltipComponents.add(Component.translatable("tooltip.mccourse.tomato.1"));
+                    super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+                }
+            }, new Item.Properties().food(ModFoodProperties.TOMATO));
+    public static final  DeferredItem<Item> FROSTFIRE_ICE =
+            ITEMs.registerItem("frostfire_ice", properties -> new FuelItem(properties, 800), new Item.Properties());
 
 
     public static void register(IEventBus eventBus){
